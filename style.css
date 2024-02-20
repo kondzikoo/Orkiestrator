@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow: hidden;
+}
+
+.container{
+    height: 50px;
+    background-color: blue;
+}
+
+header{
+    display: block;
+}
+
+header div{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: rgb(158, 186, 223);
+}
+
+#appLogoWithText i{
+    padding-right: 10px;
+}
+
+#profileLogo {
+    align-self: flex-end;
+    padding-right: 30px;
+}
+
+#headerLinks h2{
+    padding: 0px 10px;
+}
+
+#profileLogo i{
+ padding-right: 10px;
+}
+
+#mainContainer {
+    display: flex;
+    background-color: rgb(178, 206, 243);
+    min-height: calc(100vh - 60px); /* 60px - header*/
+}
+
+aside {
+    padding: 50px 10px;
+    display: flex;
+    flex: 1 1 30%;
+}
+
+#asideNavigation{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#asideNavigation button{
+    align-self: stretch;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+}
+
+#asideNavigation button:hover {
+    transition: 0.1s;
+    background-color: rgb(239, 248, 255);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#asideNavigation h2{
+    font-size: 28px;
+    margin: 1rem 0;
+    text-align: start;
+}
+
+main {
+    display: flex;
+    flex: 1 1 70%;
+}
+
+
+#mainTextPanel {
+    background-color: rgb(251, 253, 255);
+    margin: 3rem;
+    padding: 2rem;
+    border-radius: 4px;
+    flex: 1;
+    overflow-y: scroll;
+    max-height: 805px;
+}
+
+#newsFeed {
+    display: none;
+}
+
+#scores{
+    display: none;
+}

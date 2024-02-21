@@ -27,6 +27,28 @@ console.log(date);*/
 
 // addClickEventOnContainerClassElements();
 
+// test();
+
+
+// function test(){
+//     const fetchPromise = fetch(
+//         "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+//       );
+//       fetchPromise
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`HTTP error: ${response.status}`);
+//         }
+//         return response.json();
+//       })
+//       .then((data) => {
+//         console.log(data[0].name);
+//       })
+//       .catch((error) => {
+//         console.error(`Could not get products: ${error}`);
+//     });
+// }
+
 const newsFeedSection = document.getElementById("newsFeed");
 const mainSection = document.getElementById("mainTextPanel");
 const scoresSection = document.getElementById("scores");
@@ -48,27 +70,56 @@ scoresButton.addEventListener("click", () => {
 const projectsButton = document.getElementById("projectsButton");
 projectsButton.addEventListener("click", (event) =>{
   console.log(event.currentTarget);
+  getLocalJson();
 })
 
-test();
+const documentsButton = document.getElementById("documentsButton");
+documentsButton.addEventListener("click", () => {
+    mainSection.innerHTML="";
+    getJsonData();
+})
+
+// test();
 
 
-function test(){
-    const fetchPromise = fetch(
-        "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
-      );
-      fetchPromise
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data[0].name);
-      })
-      .catch((error) => {
-        console.error(`Could not get products: ${error}`);
-    });
+// function test(){
+//     const fetchPromise = fetch(
+//         "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+//       );
+//       fetchPromise
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`HTTP error: ${response.status}`);
+//         }
+//         return response.json();
+//       })
+//       .then((data) => {
+//         console.log(data[0].name);
+//       })
+//       .catch((error) => {
+//         console.error(`Could not get products: ${error}`);
+//     });
+// }
+
+
+async function getJsonData(){
+  const request = new Request("https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json");
+
+  const response = await fetch(request);
+  console.log(response.status);
+  const superHeroes = await response.json();
+
+  console.log(superHeroes);
 }
 
+async function getLocalJson(){
+  const request = new Request("https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json");
+
+  //https://github.com/kondzikoo/Orkiestrator/blob/main/data.json
+
+  const response = await fetch(request);
+  console.log(response.status);
+  const data = await response.json();
+
+  console.log(data);
+}

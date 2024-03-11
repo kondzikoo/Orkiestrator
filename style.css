@@ -49,6 +49,12 @@ header div{
     min-height: calc(100vh - 60px); /* 60px - header*/
 }
 
+@media screen and (max-width: 1000px) {
+    #mainContainer{
+        display: block;
+    }
+}
+
 aside {
     padding: 50px 10px;
     display: flex;

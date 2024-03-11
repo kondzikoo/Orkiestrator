@@ -72,7 +72,14 @@ scoresButton.addEventListener("click", async() => {
     mainSection.innerHTML="";
     // mainSection.replaceChildren(scoresSection);
     // scoresSection.style.display = "block";
-    await displayUserTextInput();
+    //await displayUserTextInput();
+    try{
+      await getKonyWebApi();
+    }
+    catch(err){
+      mainSection.innerHTML=err;
+    }
+
 })
 
 const projectsButton = document.getElementById("projectsButton");
@@ -205,4 +212,24 @@ async function displayUserTextInput(){
   form.appendChild(submitButton);
 
   mainSection.appendChild(form);
+}
+
+async function getKonyWebApi(){
+  const request = new Request("https://orkiestrator-webapi.onrender.com/api/getAll");
+  const response = await fetch(request);
+  const jsonResponse = await response.json();
+
+  console.log(jsonResponse);
+
+  const jsonArray = [...jsonResponse];
+  const users = document.createElement("h1");
+  users.innerHTML="Użytkownicy systemu";
+  mainSection.appendChild(users);
+  jsonArray.forEach(object => {
+    const h2 = document.createElement("h2");
+    h2.innerHTML=`Imię: ${object.name} \nWiek: ${object.age}`;
+    mainSection.appendChild(h2);
+  });
+
+
 }
